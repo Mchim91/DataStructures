@@ -60,6 +60,10 @@ let students = [
                 score: 89
             },
             {
+                subjectId: "3",
+                score: 76
+            },
+            {
                 subjectId: "4",
                 score: 45
             },
@@ -91,7 +95,127 @@ let students = [
             }
         ]
 
-    }
+    },
+
+    {
+        id: "5",
+        name: "Steph",
+        gender: "Female",
+        offerSubjects: [
+
+            {
+                subjectId: "2",
+                score: 70
+            },
+            {
+                subjectId: "4",
+                score: 95
+            },
+            {
+                subjectId: "5",
+                score: 30
+            }
+        ]
+
+    },
+
+    {
+        id: "6",
+        name: "Steph",
+        gender: "Female",
+        offerSubjects: [
+
+            {
+                subjectId: "2",
+                score: 70
+            },
+            {
+                subjectId: "4",
+                score: 95
+            },
+            {
+                subjectId: "5",
+                score: 100
+            },
+            {
+                subjectId: "7",
+                score: 90
+            },
+            {
+                subjectId: "8",
+                score: 40
+            },
+            {
+                subjectId: "9",
+                score: 36
+            }
+        ]
+
+    },
+
+    {
+        id: "7",
+        name: "Joe",
+        gender: "Male",
+        offerSubjects: [
+
+            {
+                subjectId: "2",
+                score: 70
+            },
+            {
+                subjectId: "4",
+                score: 95
+            },
+            {
+                subjectId: "5",
+                score: 50
+            },
+            {
+                subjectId: "1",
+                score: 70
+            },
+            {
+                subjectId: "9",
+                score: 30
+            }
+        ]
+
+    },
+
+    {
+        id: "8",
+        name: "Mercy",
+        gender: "Female",
+        offerSubjects: [
+
+            {
+                subjectId: "7",
+                score: 70
+            },
+            {
+                subjectId: "6",
+                score: 95
+            },
+            {
+                subjectId: "2",
+                score: 75
+            },
+            {
+                subjectId: "2",
+                score: 30
+            },
+            {
+                subjectId: "6",
+                score: 79
+            },
+            {
+                subjectId: "5",
+                score: 40
+            }
+        ]
+
+    },
 
 ]
 
@@ -115,6 +239,22 @@ let subjects = [
     {
         id: "5",
         name: "Physics"
+    },
+    {
+        id: "6",
+        name: "Geography"
+    },
+    {
+        id: "7",
+        name: "Economics"
+    },
+    {
+        id: "8",
+        name: "BioTech"
+    },
+    {
+        id: "9",
+        name: "Music"
     }
 ]
 
@@ -170,47 +310,47 @@ for (const sub of subjects) {
         students: studentOfferingSubject
     })
 }
-console.log("All Subjects and their students ", JSON.stringify(allSubjectAndStudents))
+//console.log("All Subjects and their students ", JSON.stringify(allSubjectAndStudents))
 
 // No of Students
 
 let NoOfStudents = 0;
-for(const student of students) {
-    NoOfStudents = NoOfStudents +1;
+for (const student of students) {
+    NoOfStudents = NoOfStudents + 1;
 }
 console.log("NumberOfStudents = ", NoOfStudents)
 
 // No of Subjects
 
 let NoOfSubjects = 0;
-for(const sub of subjects) {
-    NoOfSubjects = NoOfSubjects +1;
+for (const sub of subjects) {
+    NoOfSubjects = NoOfSubjects + 1;
 }
 console.log("NumberOfSubject = ", NoOfSubjects)
 
-// No of Students that passed English
+// No of Students that scores is between 10 and 95 in Englishb
 
 let SubjectOfInterest = "English";
 let PassedSubject = [];
 
-for(const sub of subjects) {
-    if(sub.name.toLowerCase() === InterestedSubject.toLowerCase()){
+for (const sub of subjects) {
+    if (sub.name.toLowerCase() === InterestedSubject.toLowerCase()) {
 
         for (const student of students) {
             const checkIfStudentOffered = student.offerSubjects.find(x => x.subjectId === sub.id);
 
-        if(checkIfStudentOffered) {
-            InterestedSubjectCount = InterestedSubjectCount + 1;
+            if (checkIfStudentOffered) {
+                InterestedSubjectCount = InterestedSubjectCount + 1;
 
-            if(checkIfStudentOffered.score >= 30 ){
-                PassedSubject.push({
-                    id: student.id,
-                    name: student.name,
-                    gender: student.gender
-                });
+                if (checkIfStudentOffered.score >= 10 && checkIfStudentOffered.score <= 95) {
+                    PassedSubject.push({
+                        id: student.id,
+                        name: student.name,
+                        gender: student.gender
+                    });
+                }
+
             }
-
-        }
         }
     }
 }
